@@ -1,0 +1,180 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+}
+
+const { title, description, ogImage } = Astro.props;
+const businessName = 'Ahhh A Massage';
+const currentPath = Astro.url.pathname;
+const canonicalURL = Astro.url.href;
+
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'About', href: '/about' },
+  { label: 'Testimonials', href: '/testimonials' },
+  { label: 'Contact', href: '/contact' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/' || currentPath === '';
+  return currentPath.startsWith(href);
+}
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title} | {businessName}</title>
+  <meta name="description" content={description} />
+
+  <meta property="og:title" content={`${title} | ${businessName}`} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${title} | ${businessName}`} />
+  <meta name="twitter:description" content={description} />
+  {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+  <link rel="canonical" href={canonicalURL} />
+  <link rel="icon" href="/favicon.ico" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <script async src="https://api.keithkelly.dev/d/s"></script>
+  <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init({endpoint:"https://api.keithkelly.dev/d/e"})</script>
+</head>
+<body>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-full focus:text-sm focus:font-medium">Skip to content</a>
+
+  <header class="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border" id="site-header">
+    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)] flex items-center justify-between h-16 md:h-20">
+      <a href="/" class="font-display text-xl md:text-2xl font-bold text-foreground tracking-tight hover:opacity-100">
+        Ahhh A Massage
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class={`text-sm font-medium tracking-wide relative py-1 ${isActive(link.href) ? 'text-primary' : 'text-foreground/80 hover:text-foreground'}`}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+            {isActive(link.href) && (
+              <span class="absolute bottom-0 left-0 right-0 h-[2px] bg-primary rounded-full"></span>
+            )}
+          </a>
+        ))}
+        <a href="/contact" class="bg-primary text-primary-foreground px-5 py-2 rounded-full text-sm font-medium hover:opacity-90">
+          Book a Session
+        </a>
+      </nav>
+
+      <button
+        id="menu-toggle"
+        class="md:hidden w-10 h-10 flex items-center justify-center text-foreground"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="w-6 h-6" id="hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg class="w-6 h-6 hidden" id="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <nav id="mobile-menu" hidden class="md:hidden bg-background border-t border-border" aria-label="Mobile navigation">
+      <div class="px-[var(--padding-x-mobile)] py-4 flex flex-col gap-1">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class={`block py-3 px-4 rounded-lg text-base font-medium ${isActive(link.href) ? 'text-primary bg-muted' : 'text-foreground/80'}`}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))}
+        <a href="/contact" class="mt-2 bg-primary text-primary-foreground px-5 py-3 rounded-full text-center text-base font-medium">
+          Book a Session
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <slot />
+  </main>
+
+  <footer class="bg-foreground text-background/90">
+    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)] py-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+        <div>
+          <p class="font-display text-xl font-bold text-background mb-4">Ahhh A Massage</p>
+          <p class="text-sm text-background/70 leading-relaxed">Holistic therapeutic massage for chronic pain, stress, and surgical recovery. Margie Webb, R.N., BCTMB. Practicing since 2001.</p>
+        </div>
+        <div>
+          <p class="font-medium text-background mb-4 text-sm uppercase tracking-wider">Contact</p>
+          <ul class="space-y-2 text-sm text-background/70">
+            <li>
+              <a href="tel:4128778569" class="text-background/70 hover:text-background">(412) 877-8569</a>
+            </li>
+            <li>310 East McMurray Rd</li>
+            <li>McMurray, PA 15317</li>
+            <li class="pt-2">
+              <a href="https://www.facebook.com/margiebatewebb/" class="text-background/70 hover:text-background" target="_blank" rel="noopener noreferrer">Facebook</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-medium text-background mb-4 text-sm uppercase tracking-wider">Hours</p>
+          <ul class="space-y-1.5 text-sm text-background/70">
+            <li class="flex justify-between"><span>Mon &ndash; Thu</span><span>9:00 am &ndash; 8:00 pm</span></li>
+            <li class="flex justify-between"><span>Fri</span><span>9:00 am &ndash; 5:00 pm</span></li>
+            <li class="flex justify-between"><span>Sat</span><span>By appointment</span></li>
+            <li class="flex justify-between"><span>Sun</span><span>Closed</span></li>
+          </ul>
+          <p class="mt-4 text-sm text-background/60">Cash only</p>
+        </div>
+      </div>
+      <div class="mt-12 pt-8 border-t border-background/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-xs text-background/50">&copy; {new Date().getFullYear()} Ahhh A Massage. All rights reserved.</p>
+        <nav class="flex gap-6 text-xs text-background/50" aria-label="Footer navigation">
+          {navLinks.map(link => (
+            <a href={link.href} class="hover:text-background/80">{link.label}</a>
+          ))}
+        </nav>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const hamburger = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    menu!.hidden = expanded;
+    hamburger!.classList.toggle('hidden', !expanded);
+    closeIcon!.classList.toggle('hidden', expanded);
+  });
+</script>

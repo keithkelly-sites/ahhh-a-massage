@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+import adamImg from '../../public/images/adam-testimonial-480w.jpg';
+import gailImg from '../../public/images/gail-testimonial-480w.jpg';
+---
+
+<Layout
+  title="Client Testimonials"
+  description="Read how clients have recovered from chronic back pain, car accident injuries, fibromyalgia, and tendonitis with Margie Webb's therapeutic massage in McMurray, PA."
+>
+  <!-- Testimonials Hero -->
+  <section class="bg-background pt-16 md:pt-24 pb-10 md:pb-14">
+    <div class="max-w-[720px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)] text-center">
+      <h1 class="mb-4">Client Stories</h1>
+      <p class="text-muted-foreground text-lg leading-relaxed">
+        Recovery is a process. These clients share theirs in their own words.
+      </p>
+    </div>
+  </section>
+
+  <!-- Adam's Story -->
+  <section class="bg-white py-[var(--section-padding-y-mobile)] md:py-[var(--section-padding-y)]">
+    <div class="max-w-[720px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
+      <h2 class="mb-8">"I Wouldn't Be Getting Married..."</h2>
+      <blockquote class="border-l-[3px] border-accent pl-6 md:pl-8">
+        <div class="font-display italic text-base md:text-lg leading-relaxed text-foreground/90 space-y-4">
+          <p>
+            "You don't know the effect you have on people, do you? If it wasn't for you, I wouldn't be getting married!" This was my reply to Margie's question as to why she had gotten a wedding invitation.
+          </p>
+          <p>
+            Years ago I picked up her business card at my friend's jewelry store. I had been in a car accident and injured my back. I had to move back in with my parents. I was told to go on disability. I wanted to get back to work and live my life on my terms.
+          </p>
+          <p>
+            Whatever she does to the muscles makes the pain go away. I am usually pain free until a few days prior to my next appointment. Margie helped me correct my posture and gave me stretches to do on my own that keep things in check. I schedule appointments every 4 weeks.
+          </p>
+          <p>
+            I told her she is not allowed to retire unless she can replace herself with an equally skilled and compassionate person.
+          </p>
+          <p>
+            Since I was able to get my life back, I was back to work and began dating. I bought a house. Beth and I got married and we have two beautiful baby boys. If Margie hadn't helped me get my life back, I would have missed out on being a husband and a father.
+          </p>
+          <p>My life is good.</p>
+        </div>
+      </blockquote>
+      <div class="flex items-center gap-3 mt-6 pl-6 md:pl-8">
+        <Image
+          src={adamImg}
+          alt="Adam, client who recovered from car accident back injury at Ahhh A Massage"
+          class="w-12 h-12 rounded-full object-cover"
+          width={48}
+          height={48}
+          loading="lazy"
+        />
+        <p class="text-sm text-muted-foreground font-medium">Adam, McMurray PA</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gail's Story -->
+  <section class="bg-muted py-[var(--section-padding-y-mobile)] md:py-[var(--section-padding-y)]">
+    <div class="max-w-[720px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
+      <h2 class="mb-8">"Ahhh Story of Incredible Healing"</h2>
+      <blockquote class="border-l-[3px] border-accent pl-6 md:pl-8">
+        <div class="font-display italic text-base md:text-lg leading-relaxed text-foreground/90 space-y-4">
+          <p>
+            I was experiencing severe chronic pain from tendonitis in my shoulder. I realized Margie was unique on my very first visit. She spent time talking to me about my pain, asking specific questions to get at the root of my problem, and making suggestions for things I could do between visits, not only for the short term, but in the long run as well.
+          </p>
+          <p>
+            I worked on improving my posture. I changed my pillow and sleep positions. I rearranged my desk and chair at work. I did the stretching exercises she gave me and drank more water.
+          </p>
+          <p>
+            Margie and I would both do research between sessions and bring new ideas to the table. It was a process, but together we worked as a team to help me heal. And I did. The pain is finally gone.
+          </p>
+          <p>
+            She is a wonderful and compassionate person who only wants the best for her clients. She definitely went above and beyond my expectations. She has helped me tremendously, and for that I will be forever grateful.
+          </p>
+        </div>
+      </blockquote>
+      <div class="flex items-center gap-3 mt-6 pl-6 md:pl-8">
+        <Image
+          src={gailImg}
+          alt="Gail P., client who recovered from shoulder tendonitis at Ahhh A Massage"
+          class="w-12 h-12 rounded-full object-cover"
+          width={48}
+          height={48}
+          loading="lazy"
+        />
+        <p class="text-sm text-muted-foreground font-medium">Gail P.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Band -->
+  <section class="bg-primary py-12 md:py-14">
+    <div class="max-w-[800px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)] text-center">
+      <h2 class="text-primary-foreground mb-4">Your Recovery Could Start Today.</h2>
+      <a href="tel:4128778569" class="font-display text-2xl md:text-3xl font-bold text-primary-foreground block mb-6">(412) 877-8569</a>
+      <a href="/contact" class="inline-block bg-primary-foreground text-primary px-8 py-3 rounded-full font-medium hover:opacity-90">
+        Book a Session
+      </a>
+    </div>
+  </section>
+</Layout>
