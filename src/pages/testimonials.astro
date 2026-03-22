@@ -1,105 +1,64 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
 
-import adamImg from '../../public/images/adam-testimonial-480w.jpg';
-import gailImg from '../../public/images/gail-testimonial-480w.jpg';
+const testimonials = [
+  { title: "I Wouldn't Be Getting Married...", text: "If Margie hadn't helped me get my life back — I would have missed out on being a husband and a father. Recovery is a process. Whatever she does to the muscles makes the pain go away. I told her she is not allowed to retire unless she can replace herself with an equally skilled and compassionate person. My life is good.", featured: true },
+  { title: "Ahhh Story of Incredible Healing", author: "Gail P.", text: "Margie and I would both do research between sessions and bring new ideas to the table. Each week was a new experience. It was a process, but together we worked as a TEAM to help me heal. AND I DID. It took some time, but the pain is finally gone. She definitely went above and beyond my expectations." },
+  { author: "Barb", text: "I've been going to a massage therapist for over 20 years now. It has been a huge blessing for me to find Ahhh A Massage. Margie brings her knowledge and expertise to what she does but it's so much more than that. She really cares about the person that she's working with which I believe makes Margie unique." },
+  { author: "Theresa P.", text: "Ahhh a Massage is a sanctuary for those who are filled with stress and worry. From the flower gardens and pretty statues in the yard, to the beautiful gold fish swimming in the pond near the porch, you feel you have entered another world. Margie greets you at the door with a smile. It is as close to Heaven as you can imagine." },
+  { author: "Mark M.", text: "Margie Webb is a talented professional who emphasizes an effective and individualized holistic healing program tailored for each of her clients. She is an astute listener and works with clients to eliminate chronic pain and optimize recovery. The results have been outstanding." },
+  { author: "Wendy S.", text: "She is very good and if you live in the area I encourage you to pamper yourself by checking it out! She worked wonders for me and her skills helped Sarah to compete with her school winter guard team in spite of an injury." },
+  { author: "Carole Hesse S.", text: "I love my massages with Margie so much that I have a massage every month. I highly recommend her massages. She is very knowledgeable having been a nurse in the past." },
+  { author: "Amy Blazewick A.", text: "Margie is a great massage therapist, and provides a relaxing environment for massages. She focuses on her client's needs and how she can lessen any pain in the body. Because of her nursing background, she has so much to offer." },
+];
 ---
 
 <Layout
-  title="Client Testimonials"
-  description="Read how clients have recovered from chronic back pain, car accident injuries, fibromyalgia, and tendonitis with Margie Webb's therapeutic massage in McMurray, PA."
+  title="Testimonials | Ahhh A Massage — McMurray, PA"
+  description="Read real stories from clients whose lives have been transformed by Margie Webb's therapeutic massage at Ahhh A Massage."
 >
-  <!-- Testimonials Hero -->
-  <section class="bg-background pt-16 md:pt-24 pb-10 md:pb-14">
-    <div class="max-w-[720px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)] text-center">
-      <h1 class="mb-4">Client Stories</h1>
-      <p class="text-muted-foreground text-lg leading-relaxed">
-        Recovery is a process. These clients share theirs in their own words.
-      </p>
-    </div>
-  </section>
-
-  <!-- Adam's Story -->
-  <section class="bg-white py-[var(--section-padding-y-mobile)] md:py-[var(--section-padding-y)]">
-    <div class="max-w-[720px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
-      <h2 class="mb-8">"I Wouldn't Be Getting Married..."</h2>
-      <blockquote class="border-l-[3px] border-accent pl-6 md:pl-8">
-        <div class="font-display italic text-base md:text-lg leading-relaxed text-foreground/90 space-y-4">
-          <p>
-            "You don't know the effect you have on people, do you? If it wasn't for you, I wouldn't be getting married!" This was my reply to Margie's question as to why she had gotten a wedding invitation.
-          </p>
-          <p>
-            Years ago I picked up her business card at my friend's jewelry store. I had been in a car accident and injured my back. I had to move back in with my parents. I was told to go on disability. I wanted to get back to work and live my life on my terms.
-          </p>
-          <p>
-            Whatever she does to the muscles makes the pain go away. I am usually pain free until a few days prior to my next appointment. Margie helped me correct my posture and gave me stretches to do on my own that keep things in check. I schedule appointments every 4 weeks.
-          </p>
-          <p>
-            I told her she is not allowed to retire unless she can replace herself with an equally skilled and compassionate person.
-          </p>
-          <p>
-            Since I was able to get my life back, I was back to work and began dating. I bought a house. Beth and I got married and we have two beautiful baby boys. If Margie hadn't helped me get my life back, I would have missed out on being a husband and a father.
-          </p>
-          <p>My life is good.</p>
-        </div>
-      </blockquote>
-      <div class="flex items-center gap-3 mt-6 pl-6 md:pl-8">
-        <Image
-          src={adamImg}
-          alt="Adam, client who recovered from car accident back injury at Ahhh A Massage"
-          class="w-12 h-12 rounded-full object-cover"
-          width={48}
-          height={48}
-          loading="lazy"
-        />
-        <p class="text-sm text-muted-foreground font-medium">Adam, McMurray PA</p>
+  <section class="bg-sage-pale py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <div class="line-sage mb-4"></div>
+        <h1 class="font-display text-4xl md:text-5xl font-light text-charcoal leading-tight mb-6">Testimonials</h1>
+        <p class="text-earth text-lg">Real stories from people whose lives have changed.</p>
       </div>
     </div>
   </section>
 
-  <!-- Gail's Story -->
-  <section class="bg-muted py-[var(--section-padding-y-mobile)] md:py-[var(--section-padding-y)]">
-    <div class="max-w-[720px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
-      <h2 class="mb-8">"Ahhh Story of Incredible Healing"</h2>
-      <blockquote class="border-l-[3px] border-accent pl-6 md:pl-8">
-        <div class="font-display italic text-base md:text-lg leading-relaxed text-foreground/90 space-y-4">
-          <p>
-            I was experiencing severe chronic pain from tendonitis in my shoulder. I realized Margie was unique on my very first visit. She spent time talking to me about my pain, asking specific questions to get at the root of my problem, and making suggestions for things I could do between visits, not only for the short term, but in the long run as well.
-          </p>
-          <p>
-            I worked on improving my posture. I changed my pillow and sleep positions. I rearranged my desk and chair at work. I did the stretching exercises she gave me and drank more water.
-          </p>
-          <p>
-            Margie and I would both do research between sessions and bring new ideas to the table. It was a process, but together we worked as a team to help me heal. And I did. The pain is finally gone.
-          </p>
-          <p>
-            She is a wonderful and compassionate person who only wants the best for her clients. She definitely went above and beyond my expectations. She has helped me tremendously, and for that I will be forever grateful.
-          </p>
-        </div>
-      </blockquote>
-      <div class="flex items-center gap-3 mt-6 pl-6 md:pl-8">
-        <Image
-          src={gailImg}
-          alt="Gail P., client who recovered from shoulder tendonitis at Ahhh A Massage"
-          class="w-12 h-12 rounded-full object-cover"
-          width={48}
-          height={48}
-          loading="lazy"
-        />
-        <p class="text-sm text-muted-foreground font-medium">Gail P.</p>
+  <section class="py-20 lg:py-28">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Featured -->
+      <div class="bg-sage-dark rounded-3xl p-8 md:p-12 mb-12 reveal">
+        <p class="text-sage-light uppercase tracking-[0.2em] text-xs font-semibold mb-4">Featured Story</p>
+        <h2 class="font-display text-2xl md:text-3xl text-white font-light italic leading-relaxed mb-6">
+          "{testimonials[0].title}"
+        </h2>
+        <p class="text-white/70 leading-relaxed">{testimonials[0].text}</p>
       </div>
-    </div>
-  </section>
 
-  <!-- CTA Band -->
-  <section class="bg-primary py-12 md:py-14">
-    <div class="max-w-[800px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)] text-center">
-      <h2 class="text-primary-foreground mb-4">Your Recovery Could Start Today.</h2>
-      <a href="tel:4128778569" class="font-display text-2xl md:text-3xl font-bold text-primary-foreground block mb-6">(412) 877-8569</a>
-      <a href="/contact" class="inline-block bg-primary-foreground text-primary px-8 py-3 rounded-full font-medium hover:opacity-90">
-        Book a Session
-      </a>
+      <!-- Rest -->
+      <div class="space-y-6">
+        {testimonials.slice(1).map(t => (
+          <blockquote class="bg-white rounded-2xl p-8 border border-sage-pale reveal">
+            <p class="text-earth leading-relaxed mb-4">{t.text}</p>
+            {t.author && <cite class="not-italic text-sage-dark font-medium text-sm">— {t.author}</cite>}
+          </blockquote>
+        ))}
+      </div>
+
+      <div class="text-center mt-12 reveal">
+        <a
+          href="https://www.google.com/search?q=ahhh+a+massage#lrd=0x883455930fcce22d:0x9524b19615e62d7,3,,,"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-sage"
+        >
+          Leave Us a Review on Google
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+        </a>
+      </div>
     </div>
   </section>
 </Layout>

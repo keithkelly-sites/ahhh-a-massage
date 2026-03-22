@@ -1,29 +1,29 @@
 ---
 import '../styles/global.css';
+import { Font } from 'astro:assets';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title: string;
   description: string;
+  canonical?: string;
   ogImage?: string;
+  jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, ogImage } = Astro.props;
-const businessName = 'Ahhh A Massage';
-const currentPath = Astro.url.pathname;
-const canonicalURL = Astro.url.href;
+const { title, description, canonical, ogImage, jsonLd } = Astro.props;
+const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
+const ogImg = ogImage || '/images/garden.jpg';
 
 const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services' },
-  { label: 'About', href: '/about' },
-  { label: 'Testimonials', href: '/testimonials' },
-  { label: 'Contact', href: '/contact' },
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/about', label: 'Meet Margie' },
+  { href: '/testimonials', label: 'Testimonials' },
+  { href: '/contact', label: 'Contact' },
 ];
 
-function isActive(href: string): boolean {
-  if (href === '/') return currentPath === '/' || currentPath === '';
-  return currentPath.startsWith(href);
-}
+const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -31,150 +31,131 @@ function isActive(href: string): boolean {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{title} | {businessName}</title>
+  <title>{title}</title>
   <meta name="description" content={description} />
-
-  <meta property="og:title" content={`${title} | ${businessName}`} />
-  <meta property="og:description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content={canonicalURL} />
-  {ogImage && <meta property="og:image" content={ogImage} />}
-
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={new URL(ogImg, Astro.site).href} />
+  <meta property="og:site_name" content="Ahhh A Massage" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={`${title} | ${businessName}`} />
+  <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  {ogImage && <meta name="twitter:image" content={ogImage} />}
-
-  <link rel="canonical" href={canonicalURL} />
-  <link rel="icon" href="/favicon.ico" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
-
-  <script async src="https://api.keithkelly.dev/d/s"></script>
-  <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init({endpoint:"https://api.keithkelly.dev/d/e"})</script>
+  <meta name="twitter:image" content={new URL(ogImg, Astro.site).href} />
+  {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  <Font cssVariable="--font-display" />
+  <Font cssVariable="--font-body" />
+  <ClientRouter />
+  <script defer data-domain="ahhhamassage.keithkelly.dev" src="https://api.keithkelly.dev/d/s/script.js"></script>
 </head>
-<body>
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-full focus:text-sm focus:font-medium">Skip to content</a>
+<body class="min-h-screen flex flex-col">
+  <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <header class="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border" id="site-header">
-    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)] flex items-center justify-between h-16 md:h-20">
-      <a href="/" class="font-display text-xl md:text-2xl font-bold text-foreground tracking-tight hover:opacity-100">
-        Ahhh A Massage
-      </a>
-
-      <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
-        {navLinks.map(link => (
-          <a
-            href={link.href}
-            class={`text-sm font-medium tracking-wide relative py-1 ${isActive(link.href) ? 'text-primary' : 'text-foreground/80 hover:text-foreground'}`}
-            aria-current={isActive(link.href) ? 'page' : undefined}
-          >
-            {link.label}
-            {isActive(link.href) && (
-              <span class="absolute bottom-0 left-0 right-0 h-[2px] bg-primary rounded-full"></span>
-            )}
-          </a>
-        ))}
-        <a href="/contact" class="bg-primary text-primary-foreground px-5 py-2 rounded-full text-sm font-medium hover:opacity-90">
-          Book a Session
+  <header class="sticky top-0 z-50 bg-cream/95 backdrop-blur-md border-b border-sage-pale/50" id="site-header">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-18">
+        <a href="/" class="flex flex-col leading-none" aria-label="Ahhh A Massage — Home">
+          <span class="font-display text-xl font-semibold text-sage-dark italic">Ahhh A Massage</span>
         </a>
-      </nav>
 
-      <button
-        id="menu-toggle"
-        class="md:hidden w-10 h-10 flex items-center justify-center text-foreground"
-        aria-label="Toggle menu"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <svg class="w-6 h-6" id="hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        <svg class="w-6 h-6 hidden" id="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
+        <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
+          {navLinks.map(link => (
+            <a
+              href={link.href}
+              class:list={[
+                'px-3 py-1.5 rounded-full text-sm transition-colors',
+                currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                  ? 'bg-sage-pale text-sage-dark font-medium'
+                  : 'text-earth hover:text-sage-dark hover:bg-sage-pale/50'
+              ]}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <a href="tel:4128778569" class="hidden md:flex items-center gap-2 text-sm text-sage-dark font-medium">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+          (412) 877-8569
+        </a>
+
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-earth" aria-label="Open menu" aria-expanded="false">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+      </div>
     </div>
 
-    <nav id="mobile-menu" hidden class="md:hidden bg-background border-t border-border" aria-label="Mobile navigation">
-      <div class="px-[var(--padding-x-mobile)] py-4 flex flex-col gap-1">
+    <div id="mobile-nav" class="mobile-nav fixed inset-0 z-50 bg-cream md:hidden" aria-hidden="true">
+      <div class="flex items-center justify-between h-18 px-4 sm:px-6 border-b border-sage-pale/50">
+        <span class="font-display text-xl font-semibold text-sage-dark italic">Ahhh A Massage</span>
+        <button id="mobile-close-btn" class="p-2 text-earth" aria-label="Close menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+      <nav class="px-6 py-8 flex flex-col gap-1" aria-label="Mobile navigation">
         {navLinks.map(link => (
-          <a
-            href={link.href}
-            class={`block py-3 px-4 rounded-lg text-base font-medium ${isActive(link.href) ? 'text-primary bg-muted' : 'text-foreground/80'}`}
-            aria-current={isActive(link.href) ? 'page' : undefined}
-          >
+          <a href={link.href} class:list={['px-4 py-3 rounded-xl text-lg transition-colors', currentPath === link.href ? 'text-sage-dark bg-sage-pale' : 'text-earth hover:text-sage-dark']}>
             {link.label}
           </a>
         ))}
-        <a href="/contact" class="mt-2 bg-primary text-primary-foreground px-5 py-3 rounded-full text-center text-base font-medium">
-          Book a Session
-        </a>
-      </div>
-    </nav>
+        <div class="mt-6 pt-6 border-t border-sage-pale">
+          <a href="tel:4128778569" class="btn btn-sage justify-center w-full">Call Margie — (412) 877-8569</a>
+        </div>
+      </nav>
+    </div>
   </header>
 
-  <main id="main-content">
+  <main id="main-content" class="flex-1">
     <slot />
   </main>
 
-  <footer class="bg-foreground text-background/90">
-    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)] py-16">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+  <footer class="bg-sage-dark text-white/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid sm:grid-cols-3 gap-10">
         <div>
-          <p class="font-display text-xl font-bold text-background mb-4">Ahhh A Massage</p>
-          <p class="text-sm text-background/70 leading-relaxed">Holistic therapeutic massage for chronic pain, stress, and surgical recovery. Margie Webb, R.N., BCTMB. Practicing since 2001.</p>
+          <span class="font-display text-2xl font-semibold text-white italic">Ahhh A Massage</span>
+          <p class="text-sm mt-3 text-white/60 leading-relaxed">Escape from the ordinary to the extraordinary. Nurturing massage to relax and rejuvenate your mind, body, and spirit.</p>
         </div>
         <div>
-          <p class="font-medium text-background mb-4 text-sm uppercase tracking-wider">Contact</p>
-          <ul class="space-y-2 text-sm text-background/70">
-            <li>
-              <a href="tel:4128778569" class="text-background/70 hover:text-background">(412) 877-8569</a>
-            </li>
-            <li>310 East McMurray Rd</li>
-            <li>McMurray, PA 15317</li>
-            <li class="pt-2">
-              <a href="https://www.facebook.com/margiebatewebb/" class="text-background/70 hover:text-background" target="_blank" rel="noopener noreferrer">Facebook</a>
-            </li>
-          </ul>
+          <h3 class="font-display text-lg text-white mb-3">Visit</h3>
+          <address class="not-italic text-sm space-y-1 text-white/60">
+            <p>310 East McMurray Rd</p>
+            <p>McMurray, PA 15317</p>
+            <p class="mt-3"><a href="tel:4128778569" class="text-sage-light hover:text-white transition-colors">(412) 877-8569</a></p>
+          </address>
         </div>
         <div>
-          <p class="font-medium text-background mb-4 text-sm uppercase tracking-wider">Hours</p>
-          <ul class="space-y-1.5 text-sm text-background/70">
-            <li class="flex justify-between"><span>Mon &ndash; Thu</span><span>9:00 am &ndash; 8:00 pm</span></li>
-            <li class="flex justify-between"><span>Fri</span><span>9:00 am &ndash; 5:00 pm</span></li>
-            <li class="flex justify-between"><span>Sat</span><span>By appointment</span></li>
-            <li class="flex justify-between"><span>Sun</span><span>Closed</span></li>
-          </ul>
-          <p class="mt-4 text-sm text-background/60">Cash only</p>
+          <h3 class="font-display text-lg text-white mb-3">Hours</h3>
+          <div class="text-sm text-white/60 space-y-1">
+            <p>Mon – Thu: 9:00 AM – 8:00 PM</p>
+            <p>Friday: 9:00 AM – 5:00 PM</p>
+            <p>Saturday: By Appointment</p>
+            <p>Sunday: Closed</p>
+          </div>
         </div>
       </div>
-      <div class="mt-12 pt-8 border-t border-background/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p class="text-xs text-background/50">&copy; {new Date().getFullYear()} Ahhh A Massage. All rights reserved.</p>
-        <nav class="flex gap-6 text-xs text-background/50" aria-label="Footer navigation">
-          {navLinks.map(link => (
-            <a href={link.href} class="hover:text-background/80">{link.label}</a>
-          ))}
-        </nav>
+      <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
+        <p>&copy; {new Date().getFullYear()} Ahhh A Massage. License #MSG001784.</p>
+        <div class="flex items-center gap-4">
+          <a href="https://www.facebook.com/margiebatewebb/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-white/70 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
+          </a>
+        </div>
       </div>
     </div>
   </footer>
+
+  <script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('mobile-close-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    function open() { mobileNav?.classList.add('open'); mobileNav?.setAttribute('aria-hidden','false'); menuBtn?.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+    function close() { mobileNav?.classList.remove('open'); mobileNav?.setAttribute('aria-hidden','true'); menuBtn?.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+    menuBtn?.addEventListener('click', open);
+    closeBtn?.addEventListener('click', close);
+    mobileNav?.querySelectorAll('a').forEach(l => l.addEventListener('click', close));
+  </script>
 </body>
 </html>
-
-<script>
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  const hamburger = document.getElementById('hamburger-icon');
-  const closeIcon = document.getElementById('close-icon');
-
-  toggle?.addEventListener('click', () => {
-    const expanded = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!expanded));
-    menu!.hidden = expanded;
-    hamburger!.classList.toggle('hidden', !expanded);
-    closeIcon!.classList.toggle('hidden', expanded);
-  });
-</script>

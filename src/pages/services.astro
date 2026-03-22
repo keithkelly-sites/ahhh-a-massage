@@ -1,226 +1,121 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-
-import tableMassageImg from '../../public/images/slide8-e8fe8469-5d581ed7-eea9a257-1920w.jpg';
-import chairMassageImg from '../../public/images/chair-massage-400w.jpg';
-import fibroImg from '../../public/images/fibromyalgia-480w.jpg';
-import massageImg from '../../public/images/b6-1920w.jpg';
 ---
 
 <Layout
-  title="Massage Services"
-  description="Table massage, chair massage, relaxation massage, and medical/orthopedic massage in McMurray, PA. Specialties include fibromyalgia, arthritis, cancer treatment support, and post-surgical recovery."
+  title="Massage Services | Ahhh A Massage — McMurray, PA"
+  description="Relaxation massage, medical massage, table massage, and chair massage. Holistic therapeutic massage tailored to your needs."
 >
-  <!-- Services Hero -->
-  <section class="bg-background pt-16 md:pt-24 pb-10 md:pb-14">
-    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
-      <h1 class="mb-6">Massage Services</h1>
-      <p class="text-muted-foreground text-lg leading-relaxed max-w-[640px]">
-        Every session begins with a confidential intake form and a conversation. After reviewing your history, Margie designs the massage around your individual needs, not a menu item.
-      </p>
-    </div>
-  </section>
-
-  <!-- Session Types -->
-  <section class="bg-white py-[var(--section-padding-y-mobile)] md:py-[var(--section-padding-y)]">
-    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)] space-y-16 md:space-y-20">
-
-      <!-- Table Massage -->
-      <div id="table-massage" class="scroll-mt-24">
-        <div class="grid grid-cols-1 md:grid-cols-[1fr_40%] gap-8 md:gap-12 items-start">
-          <div>
-            <h2 class="mb-4">Table Massage</h2>
-            <p class="text-muted-foreground leading-relaxed mb-4">
-              A full-body session on a heated table, draped in soft flannel. On cooler days you sink into the warmth as calming music lets your mind drift. The pressure of each stroke adjusts throughout for your comfort.
-            </p>
-            <p class="text-sm text-muted-foreground">60 minutes | 90 minutes | Cash only</p>
-          </div>
-          <Image
-            src={tableMassageImg}
-            alt="Massage table at Ahhh A Massage studio, McMurray PA"
-            class="rounded-lg w-full object-cover aspect-[4/3]"
-            widths={[400, 600]}
-            sizes="(max-width: 768px) 100vw, 40vw"
-            loading="lazy"
-          />
-        </div>
-      </div>
-
-      <hr class="border-border" />
-
-      <!-- Chair Massage -->
-      <div id="chair-massage" class="scroll-mt-24">
-        <div class="grid grid-cols-1 md:grid-cols-[40%_1fr] gap-8 md:gap-12 items-start">
-          <Image
-            src={chairMassageImg}
-            alt="Chair massage at Ahhh A Massage, McMurray PA"
-            class="rounded-lg w-full object-cover aspect-[4/3] order-last md:order-first"
-            widths={[300, 400]}
-            sizes="(max-width: 768px) 100vw, 40vw"
-            loading="lazy"
-          />
-          <div>
-            <h2 class="mb-4">Chair Massage</h2>
-            <p class="text-muted-foreground leading-relaxed mb-4">
-              A targeted treatment that fits into a lunch break. No clothing needs to be removed. You leave feeling more alert and focused, ready to return to your day. Ideal for office workers and people managing repetitive strain.
-            </p>
-            <p class="text-sm text-muted-foreground">Duration varies | Cash only</p>
-          </div>
-        </div>
-      </div>
-
-      <hr class="border-border" />
-
-      <!-- Relaxation Massage -->
-      <div id="relaxation-massage" class="scroll-mt-24">
-        <h2 class="mb-4">Relaxation Massage</h2>
-        <p class="text-muted-foreground leading-relaxed max-w-[640px] mb-4">
-          Releases tension throughout the body and lowers stress levels. Improves circulation, promotes calm, and provides the therapeutic touch that daily life rarely offers.
-        </p>
-        <p class="text-sm text-muted-foreground">Available as 60 or 90 min table session</p>
-      </div>
-
-      <hr class="border-border" />
-
-      <!-- Medical Massage -->
-      <div id="medical-massage" class="scroll-mt-24">
-        <h2 class="mb-4">Medical / Orthopedic Massage</h2>
-        <p class="text-muted-foreground leading-relaxed max-w-[640px] mb-4">
-          Goes beyond stress relief. Manages pain, reduces inflammation, relieves nerve compression, and can improve digestion and mobility. Margie's nursing background allows her to work directly from your medical history.
-        </p>
-        <p class="text-sm text-muted-foreground">Duration tailored to condition | Cash only</p>
+  <section class="bg-sage-pale py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <div class="line-sage mb-4"></div>
+        <h1 class="font-display text-4xl md:text-5xl font-light text-charcoal leading-tight mb-6">Our Services</h1>
+        <p class="text-earth text-lg leading-relaxed">Your therapeutic massage experience should be as unique as you. Designed to relieve and heal the root causes of stress, tension, and chronic pain.</p>
       </div>
     </div>
   </section>
 
-  <!-- Therapeutic Specialties -->
-  <section class="bg-muted py-[var(--section-padding-y-mobile)] md:py-[var(--section-padding-y)]">
-    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
-      <h2 class="mb-3">Therapeutic Specialties</h2>
-      <p class="text-muted-foreground leading-relaxed max-w-[640px] mb-10">
-        These aren't upsells. They're the conditions Margie has spent 25 years treating. If you've been told massage won't help, talk to her first.
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="border-t-2 border-accent bg-background p-6 rounded-lg">
-          <h3 class="font-display text-lg mb-2">Chronic Stress</h3>
-          <p class="text-muted-foreground text-sm leading-relaxed">Chronic stress, whether physical, emotional, or mental, causes muscles to shorten and retain toxins, perpetuating the pain cycle. Margie assesses the physical changes and helps muscles release and re-adjust.</p>
-        </div>
-        <div class="border-t-2 border-accent bg-background p-6 rounded-lg">
-          <h3 class="font-display text-lg mb-2">Muscle Spasms</h3>
-          <p class="text-muted-foreground text-sm leading-relaxed">Spasms from gardening, shoveling, sports, or daily activity. Targeted release work addresses the muscle directly, not just the symptom.</p>
-        </div>
-        <div class="border-t-2 border-accent bg-background p-6 rounded-lg">
-          <h3 class="font-display text-lg mb-2">Arthritis Pain</h3>
-          <p class="text-muted-foreground text-sm leading-relaxed">Decreases muscle tightness and joint pain. Increases flexibility. Regular sessions have helped clients avoid escalation to more invasive treatments.</p>
-        </div>
-        <div class="border-t-2 border-accent bg-background p-6 rounded-lg">
-          <h3 class="font-display text-lg mb-2">Fibromyalgia</h3>
-          <p class="text-muted-foreground text-sm leading-relaxed">Desensitizes tender points and relaxes tight, stressed muscles. Margie hosted public education sessions on fibromyalgia and has been featured in regional press for this work.</p>
-        </div>
-        <div class="border-t-2 border-accent bg-background p-6 rounded-lg">
-          <h3 class="font-display text-lg mb-2">Repetitive Movement Injuries</h3>
-          <p class="text-muted-foreground text-sm leading-relaxed">Releases trigger points from texting, data entry, and poor head/neck/shoulder posture. Investigates and stretches the muscles driving the pain.</p>
-        </div>
-        <div class="border-t-2 border-accent bg-background p-6 rounded-lg">
-          <h3 class="font-display text-lg mb-2">Headaches, Carpal Tunnel & TMJ</h3>
-          <p class="text-muted-foreground text-sm leading-relaxed">Addresses the muscular roots of recurring headaches, carpal tunnel symptoms, and jaw tension. Often resolves where other treatments have not.</p>
-        </div>
-        <div class="border-t-2 border-accent bg-background p-6 rounded-lg">
-          <h3 class="font-display text-lg mb-2">Cancer Treatment Support</h3>
-          <p class="text-muted-foreground text-sm leading-relaxed">Safe, adapted massage during chemotherapy and radiation. Decreases stress, reduces nausea, and provides therapeutic touch during a physically demanding period.</p>
-        </div>
-        <div class="border-t-2 border-accent bg-background p-6 rounded-lg">
-          <h3 class="font-display text-lg mb-2">Post-Surgical Recovery</h3>
-          <p class="text-muted-foreground text-sm leading-relaxed">Restores flexibility to muscles disturbed by surgery. Specialized experience with mastectomy, breast surgery, neck and back surgery. Works alongside physician recommendations.</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-8">
-        <Image
-          src={fibroImg}
-          alt="Massage therapy for fibromyalgia at Ahhh A Massage, McMurray PA"
-          class="rounded-lg w-full object-cover aspect-[16/9]"
-          widths={[400, 600]}
-          sizes="(max-width: 768px) 100vw, 50vw"
-          loading="lazy"
-        />
-        <Image
-          src={massageImg}
-          alt="Woman receiving therapeutic massage at Ahhh A Massage"
-          class="rounded-lg w-full object-cover aspect-[16/9]"
-          widths={[400, 800]}
-          sizes="(max-width: 768px) 100vw, 50vw"
-          loading="lazy"
-        />
-      </div>
-    </div>
-  </section>
-
-  <!-- Booking & Payment -->
-  <section class="bg-white py-[var(--section-padding-y-mobile)] md:py-[var(--section-padding-y)]">
-    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
-      <h2 class="mb-10">Booking & Payment</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
+  <!-- Pain & Stress -->
+  <section class="py-20 lg:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center reveal">
         <div>
-          <p class="font-display text-2xl font-bold mb-2">
-            <a href="tel:4128778569" class="text-primary hover:opacity-85">(412) 877-8569</a>
+          <p class="text-lavender uppercase tracking-[0.2em] text-xs font-semibold mb-4">Pain & Tension</p>
+          <h2 class="font-display text-3xl md:text-4xl font-light text-charcoal mb-6">When Pain Takes Over</h2>
+          <p class="text-earth leading-relaxed mb-6">
+            Most people seek massage as a last resort for pain and stress. They try taking pills and other medical treatments that haven't worked. With over 20 years of experience as a massage therapist and decades as a registered nurse, Margie can recommend treatments and therapies to improve your overall well-being, along with massage.
           </p>
-          <p class="text-sm text-muted-foreground mb-6">Call to schedule your appointment</p>
-
-          <table class="w-full text-sm mb-6">
-            <tbody>
-              <tr class="border-b border-border">
-                <td class="py-2.5 text-foreground font-medium">Mon &ndash; Thu</td>
-                <td class="py-2.5 text-muted-foreground text-right">9:00 am &ndash; 8:00 pm</td>
-              </tr>
-              <tr class="border-b border-border">
-                <td class="py-2.5 text-foreground font-medium">Fri</td>
-                <td class="py-2.5 text-muted-foreground text-right">9:00 am &ndash; 5:00 pm</td>
-              </tr>
-              <tr class="border-b border-border">
-                <td class="py-2.5 text-foreground font-medium">Sat</td>
-                <td class="py-2.5 text-muted-foreground text-right">By appointment</td>
-              </tr>
-              <tr>
-                <td class="py-2.5 text-foreground font-medium">Sun</td>
-                <td class="py-2.5 text-muted-foreground text-right">Closed</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <p class="text-sm font-medium text-foreground">Payment: Cash only</p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-full bg-sage-pale flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              </div>
+              <p class="text-earth text-sm"><strong class="text-charcoal">Stress:</strong> Poor posture, constant mental pressure, and sedentary lifestyles leave your muscles aching. Massage therapy and aromatherapy can help you relax and drain the exhaustion.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-full bg-sage-pale flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              </div>
+              <p class="text-earth text-sm"><strong class="text-charcoal">Pain:</strong> Arthritis, fibromyalgia, muscle spasms, carpal tunnel, post-surgery, repetitive movement injuries, and chemotherapy — Margie knows exactly how to help.</p>
+            </div>
+          </div>
+          <p class="mt-8 text-sage-dark font-medium">Call for a free consultation: <a href="tel:4128778569" class="underline underline-offset-4 hover:text-sage">(412) 877-8569</a></p>
         </div>
-
         <div>
-          <h3 class="font-display text-lg mb-3">New Client Intake Form</h3>
-          <p class="text-muted-foreground text-sm leading-relaxed mb-4">
-            New clients: please download and complete the patient intake form before your first visit. Honesty and thoroughness on the form helps Margie prepare the most effective session.
-          </p>
-          <a
-            href="https://irp-cdn.multiscreensite.com/6097f8c0/files/uploaded/Intake%20Form%20-%20New.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 bg-muted text-foreground px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-border"
-          >
+          <img src="/images/studio.jpg" alt="Inside the massage studio" class="rounded-2xl w-full aspect-[4/5] object-cover shadow-lg" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Types -->
+  <section class="bg-stone py-20 lg:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14 reveal">
+        <div class="line-sage mx-auto mb-4"></div>
+        <h2 class="font-display text-3xl md:text-4xl font-light text-charcoal">Massage Types</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-2xl p-8 border border-sage-pale reveal">
+          <div class="w-10 h-10 rounded-full bg-sage-pale flex items-center justify-center text-sage">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+          </div>
+          <h3 class="font-display text-2xl font-medium text-charcoal mt-4 mb-3">Relaxation Massage</h3>
+          <p class="text-earth leading-relaxed">This relaxing massage is intended to help you release tension in the body and relax, lowering stress levels, improving circulation, and provide the therapeutic touch you're missing in your life.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 border border-sage-pale reveal">
+          <div class="w-10 h-10 rounded-full bg-lavender-pale flex items-center justify-center text-lavender">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+          </div>
+          <h3 class="font-display text-2xl font-medium text-charcoal mt-4 mb-3">Medical Massage</h3>
+          <p class="text-earth leading-relaxed">Sometimes you need more than stress relief and relaxation. Medical massage can help you manage pain, reduce inflammation, relieve nerve compression, and even improve digestion.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 border border-sage-pale reveal">
+          <div class="w-10 h-10 rounded-full bg-sage-pale flex items-center justify-center text-sage">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+          </div>
+          <h3 class="font-display text-2xl font-medium text-charcoal mt-4 mb-3">Table Massage</h3>
+          <p class="text-earth leading-relaxed">The table massage is a full-body massage. You can schedule a session for 60 or 90 minutes. A nurturing experience, meant to work out all the kinks and stress of your day.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 border border-sage-pale reveal">
+          <div class="w-10 h-10 rounded-full bg-sage-pale flex items-center justify-center text-sage">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <h3 class="font-display text-2xl font-medium text-charcoal mt-4 mb-3">Chair Massage</h3>
+          <p class="text-earth leading-relaxed">If you're short on time, a chair massage is a convenient treatment to squeeze into a lunch break. No clothing needs to be removed. Return to work feeling more alert and focused.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gift Certificates & Intake -->
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 gap-6 reveal">
+        <div class="bg-lavender-pale rounded-2xl p-8 text-center">
+          <h3 class="font-display text-xl font-medium text-charcoal mb-3">Gift Certificates</h3>
+          <p class="text-earth text-sm leading-relaxed mb-4">Give the gift of healing and relaxation to someone you love.</p>
+          <a href="/contact" class="btn btn-outline text-sm">Inquire About Gift Certificates</a>
+        </div>
+        <div class="bg-sage-pale rounded-2xl p-8 text-center">
+          <h3 class="font-display text-xl font-medium text-charcoal mb-3">Patient Intake Form</h3>
+          <p class="text-earth text-sm leading-relaxed mb-4">Please download and complete the intake form before your first visit. Be honest and thorough — Margie will ask additional questions to understand the big picture.</p>
+          <a href="https://irp-cdn.multiscreensite.com/6097f8c0/files/uploaded/Intake%20Form%20-%20New.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sage text-sm">
+            Download Intake Form
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-            Download Intake Form (PDF)
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Band -->
-  <section class="bg-primary py-12 md:py-14">
-    <div class="max-w-[800px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)] text-center">
-      <h2 class="text-primary-foreground mb-3">Questions Before You Book?</h2>
-      <p class="text-primary-foreground/80 mb-6">Call for a free consultation.</p>
-      <a href="tel:4128778569" class="font-display text-2xl md:text-3xl font-bold text-primary-foreground block mb-6">(412) 877-8569</a>
-      <a href="/contact" class="inline-block bg-primary-foreground text-primary px-8 py-3 rounded-full font-medium hover:opacity-90">
-        Contact Margie
-      </a>
+  <section class="bg-sage-dark py-16 text-center">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-3xl font-light text-white mb-4">Ready to Begin?</h2>
+      <p class="text-white/60 mb-8">Call for a free consultation.</p>
+      <a href="tel:4128778569" class="btn bg-white text-sage-dark border-2 border-white hover:bg-transparent hover:text-white">Call Margie — (412) 877-8569</a>
     </div>
   </section>
 </Layout>

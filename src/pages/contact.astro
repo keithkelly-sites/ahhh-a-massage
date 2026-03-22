@@ -1,157 +1,83 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-
-import giftCertImg from '../../public/images/ahh-a-massage-sign-3-558w.jpg';
 ---
 
 <Layout
-  title="Contact & Booking"
-  description="Book a session with Margie Webb at Ahhh A Massage in McMurray, PA. Call (412) 877-8569 or send a message. Cash only. Located at 310 East McMurray Rd."
+  title="Contact Ahhh A Massage | McMurray, PA"
+  description="Contact Margie Webb at Ahhh A Massage. Call (412) 877-8569 or send a message. 310 East McMurray Rd, McMurray, PA 15317."
 >
-  <!-- Contact Hero -->
-  <section class="bg-background pt-16 md:pt-24 pb-10 md:pb-14">
-    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)] text-center">
-      <h1 class="mb-4">Get in Touch</h1>
-      <p class="text-muted-foreground text-lg">Call for a free consultation, or send a message below.</p>
-    </div>
-  </section>
-
-  <!-- Contact Main -->
-  <section class="bg-white py-[var(--section-padding-y-mobile)] md:py-[var(--section-padding-y)]">
-    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-
-        <!-- Contact Info -->
-        <div>
-          <h2 class="mb-6">Contact Information</h2>
-
-          <a href="tel:4128778569" class="font-display text-3xl font-bold text-primary block mb-1">(412) 877-8569</a>
-          <p class="text-sm text-muted-foreground mb-8">Call to schedule your appointment</p>
-
-          <div class="mb-8">
-            <h3 class="font-display text-base font-semibold mb-2">Address</h3>
-            <p class="text-muted-foreground text-sm">
-              <a href="https://www.google.com/maps/place/310+E+McMurray+Rd,+Canonsburg,+PA+15317" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-primary underline underline-offset-2 decoration-border">
-                310 East McMurray Rd<br />
-                McMurray, Pennsylvania 15317
-              </a>
-            </p>
-          </div>
-
-          <div class="mb-8">
-            <h3 class="font-display text-base font-semibold mb-2">Hours</h3>
-            <table class="w-full text-sm">
-              <tbody>
-                <tr class="border-b border-border">
-                  <td class="py-2 text-foreground">Mon &ndash; Thu</td>
-                  <td class="py-2 text-muted-foreground text-right">9:00 am &ndash; 8:00 pm</td>
-                </tr>
-                <tr class="border-b border-border">
-                  <td class="py-2 text-foreground">Fri</td>
-                  <td class="py-2 text-muted-foreground text-right">9:00 am &ndash; 5:00 pm</td>
-                </tr>
-                <tr class="border-b border-border">
-                  <td class="py-2 text-foreground">Sat</td>
-                  <td class="py-2 text-muted-foreground text-right">By appointment</td>
-                </tr>
-                <tr>
-                  <td class="py-2 text-foreground">Sun</td>
-                  <td class="py-2 text-muted-foreground text-right">Closed</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p class="text-sm font-medium text-foreground mb-4">Payment: Cash only</p>
-
-          <a href="https://www.facebook.com/margiebatewebb/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            Facebook
-          </a>
-        </div>
-
-        <!-- Contact Form -->
-        <div>
-          <h2 class="mb-6">Send a Message</h2>
-          <form action="#" method="POST" class="space-y-5">
-            <div>
-              <label for="name" class="block text-sm font-medium text-foreground mb-1.5">Your Name <span aria-hidden="true" class="text-primary">*</span></label>
-              <input type="text" id="name" name="name" required class="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
-            </div>
-            <div>
-              <label for="email" class="block text-sm font-medium text-foreground mb-1.5">Email Address <span aria-hidden="true" class="text-primary">*</span></label>
-              <input type="email" id="email" name="email" required class="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
-            </div>
-            <div>
-              <label for="phone" class="block text-sm font-medium text-foreground mb-1.5">Phone Number</label>
-              <input type="tel" id="phone" name="phone" class="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
-            </div>
-            <div>
-              <label for="service" class="block text-sm font-medium text-foreground mb-1.5">Service Interest</label>
-              <select id="service" name="service" class="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary">
-                <option value="">Select a service</option>
-                <option value="Swedish Massage">Swedish Massage</option>
-                <option value="Medical/Orthopedic Massage">Medical/Orthopedic Massage</option>
-                <option value="Relaxation Massage">Relaxation Massage</option>
-                <option value="Deep Tissue Massage">Deep Tissue Massage</option>
-                <option value="Table Massage">Table Massage</option>
-                <option value="Chair Massage">Chair Massage</option>
-                <option value="Wellness Consultation">Wellness Consultation</option>
-                <option value="Rehabilitation Sessions">Rehabilitation Sessions</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-            <div>
-              <label for="message" class="block text-sm font-medium text-foreground mb-1.5">Message <span aria-hidden="true" class="text-primary">*</span></label>
-              <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary resize-y"></textarea>
-            </div>
-            <button type="submit" class="bg-primary text-primary-foreground px-8 py-3 rounded-full font-medium text-sm hover:opacity-90 w-full md:w-auto">
-              Send Message
-            </button>
-          </form>
-          <p class="form-notice mt-4 text-sm text-muted-foreground italic">This form will be active when the site goes live.</p>
-        </div>
+  <section class="bg-sage-pale py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <div class="line-sage mb-4"></div>
+        <h1 class="font-display text-4xl md:text-5xl font-light text-charcoal leading-tight mb-6">Contact</h1>
+        <p class="text-earth text-lg">Schedule an appointment with a therapist you can trust.</p>
       </div>
     </div>
   </section>
 
-  <!-- Google Maps Embed -->
-  <section class="bg-background py-[var(--section-padding-y-mobile)] md:py-[var(--section-padding-y)]">
-    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
-      <h2 class="mb-4">Find Us</h2>
-      <p class="text-muted-foreground text-sm mb-6">310 East McMurray Rd, McMurray, PA 15317</p>
-      <iframe
-        title="Ahhh A Massage location on Google Maps"
-        src="https://www.google.com/maps?q=310+East+McMurray+Rd%2C+McMurray%2C+PA+15317&output=embed"
-        width="100%"
-        height="400"
-        style="border: 0; border-radius: 8px;"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen
-      ></iframe>
-    </div>
-  </section>
+  <section class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-5 gap-12 lg:gap-16">
+        <div class="lg:col-span-3 reveal">
+          <h2 class="font-display text-2xl font-light text-charcoal mb-2">Send Margie a Message</h2>
+          <p class="text-earth mb-8 text-sm">For appointments, questions, or gift certificate inquiries.</p>
+          <p class="text-sm text-sage bg-sage-pale rounded-lg px-4 py-3 mb-6 form-notice">This form will be active once the site is live.</p>
+          <form action="#" method="POST" class="space-y-5">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="first-name" class="block text-sm font-medium text-charcoal mb-1.5">First Name <span class="text-lavender">*</span></label>
+                <input type="text" id="first-name" name="firstName" required class="w-full px-4 py-3 rounded-xl border border-sage-pale bg-white text-charcoal placeholder-earth/40 focus:border-sage focus:ring-2 focus:ring-sage/20 transition-colors" placeholder="First name" />
+              </div>
+              <div>
+                <label for="last-name" class="block text-sm font-medium text-charcoal mb-1.5">Last Name <span class="text-lavender">*</span></label>
+                <input type="text" id="last-name" name="lastName" required class="w-full px-4 py-3 rounded-xl border border-sage-pale bg-white text-charcoal placeholder-earth/40 focus:border-sage focus:ring-2 focus:ring-sage/20 transition-colors" placeholder="Last name" />
+              </div>
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-charcoal mb-1.5">Email <span class="text-lavender">*</span></label>
+              <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-sage-pale bg-white text-charcoal placeholder-earth/40 focus:border-sage focus:ring-2 focus:ring-sage/20 transition-colors" placeholder="your@email.com" />
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-charcoal mb-1.5">Phone</label>
+              <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-xl border border-sage-pale bg-white text-charcoal placeholder-earth/40 focus:border-sage focus:ring-2 focus:ring-sage/20 transition-colors" placeholder="(555) 555-5555" />
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-charcoal mb-1.5">Message <span class="text-lavender">*</span></label>
+              <textarea id="message" name="message" required rows="5" class="w-full px-4 py-3 rounded-xl border border-sage-pale bg-white text-charcoal placeholder-earth/40 focus:border-sage focus:ring-2 focus:ring-sage/20 transition-colors resize-y" placeholder="Tell Margie about your needs..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-sage">Send Message</button>
+          </form>
+        </div>
 
-  <!-- Gift Certificates -->
-  <section class="bg-muted py-[var(--section-padding-y-mobile)] md:py-[var(--section-padding-y)]">
-    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
-      <div class="grid grid-cols-1 md:grid-cols-[40fr_60fr] gap-8 md:gap-12 items-center">
-        <Image
-          src={giftCertImg}
-          alt="Gift certificates available at Ahhh A Massage, McMurray PA"
-          class="rounded-lg w-full object-cover"
-          widths={[300, 560]}
-          sizes="(max-width: 768px) 100vw, 40vw"
-          loading="lazy"
-        />
-        <div>
-          <h2 class="mb-3">Gift Certificates</h2>
-          <p class="text-muted-foreground leading-relaxed mb-4">
-            Give the gift of relief. Gift certificates are available. Call to inquire.
-          </p>
-          <a href="tel:4128778569" class="font-display text-xl font-bold text-primary">(412) 877-8569</a>
+        <div class="lg:col-span-2 reveal">
+          <div class="sticky top-28 space-y-6">
+            <div class="bg-sage-dark rounded-2xl p-6 text-white">
+              <h3 class="font-display text-lg text-white mb-4">Call Margie</h3>
+              <a href="tel:4128778569" class="flex items-center gap-3 text-sage-light hover:text-white transition-colors font-semibold text-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                (412) 877-8569
+              </a>
+              <p class="text-white/50 text-xs mt-3">Free consultation available</p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-sage-pale">
+              <h3 class="font-display text-lg font-medium text-charcoal mb-3">Location</h3>
+              <address class="not-italic text-sm text-earth space-y-1">
+                <p><a href="https://www.google.com/maps/place/310+E+McMurray+Rd,+Canonsburg,+PA+15317" target="_blank" rel="noopener noreferrer" class="hover:text-sage-dark transition-colors">310 East McMurray Rd<br />McMurray, PA 15317</a></p>
+              </address>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-sage-pale">
+              <h3 class="font-display text-lg font-medium text-charcoal mb-3">Hours</h3>
+              <div class="text-sm text-earth space-y-1">
+                <p><strong class="text-charcoal">Mon – Thu:</strong> 9:00 AM – 8:00 PM</p>
+                <p><strong class="text-charcoal">Friday:</strong> 9:00 AM – 5:00 PM</p>
+                <p><strong class="text-charcoal">Saturday:</strong> By Appointment</p>
+                <p class="text-earth/50">Sunday: Closed</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

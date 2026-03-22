@@ -1,276 +1,160 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
 
-import heroImg from '../../public/images/ahh-a-massage-outside-4-1920w.jpg';
-import practitionerImg from '../../public/images/interview-2b3-480w.jpg';
-import bctmbImg from '../../public/images/bctmb-logo--board-certified-224w.jpg';
-import amtaImg from '../../public/images/amta-0c468e1c-317w.jpg';
-import specialtyImg from '../../public/images/1-480w.jpg';
-import studioYardImg from '../../public/images/ahh-a-massage-outside-1920w.jpg';
-import studioEntryImg from '../../public/images/ahh-a-massage-outside-2-1920w.jpg';
-import studioSignImg from '../../public/images/ahh-a-massage-sign-2-603h.jpg';
+/** @type application/ld+json — rendered via Layout */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HealthAndBeautyBusiness",
+  "name": "Ahhh A Massage",
+  "description": "Therapeutic massage in McMurray, PA. Margie Webb, R.N., BCTMB, offers holistic massage therapy with 25+ years of experience.",
+  "url": "https://ahhhamassage.keithkelly.dev",
+  "telephone": "(412) 877-8569",
+  "address": { "@type": "PostalAddress", "streetAddress": "310 East McMurray Rd", "addressLocality": "McMurray", "addressRegion": "PA", "postalCode": "15317" },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "09:00", "closes": "20:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "09:00", "closes": "17:00" }
+  ],
+  "image": "https://ahhhamassage.keithkelly.dev/images/garden.jpg",
+  "priceRange": "$$",
+  "sameAs": ["https://www.facebook.com/margiebatewebb/"]
+};
+
+const services = [
+  { name: 'Relaxation Massage', desc: 'Release tension, lower stress levels, improve circulation, and receive the therapeutic touch you\'re missing in your life.', icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>' },
+  { name: 'Medical Massage', desc: 'Manage pain, reduce inflammation, relieve nerve compression — for arthritis, fibromyalgia, carpal tunnel, and post-surgery recovery.', icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>' },
+  { name: 'Table Massage', desc: 'A full-body nurturing experience for 60 or 90 minutes, working out all the kinks and stress of your day.', icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>' },
+  { name: 'Chair Massage', desc: 'Short on time? A convenient treatment to squeeze into a lunch break. Return to work feeling more alert and focused.', icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>' },
+];
 ---
 
 <Layout
-  title="Therapeutic Massage in McMurray, PA"
-  description="Margie Webb, R.N., BCTMB. Licensed massage therapist since 2001. Specializing in pain relief, fibromyalgia, post-surgical recovery, and cancer treatment support in McMurray, PA."
+  title="Ahhh A Massage | Therapeutic Massage in McMurray, PA"
+  description="Therapeutic massage in McMurray, PA by Margie Webb, R.N., BCTMB. 25+ years of experience. Holistic approach for pain relief, relaxation, and healing."
+  jsonLd={jsonLd}
 >
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "HealthAndBeautyBusiness",
-    "name": "Ahhh A Massage",
-    "url": "https://ahhh-a-massage.keithkelly.dev",
-    "telephone": "(412) 877-8569",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "310 East McMurray Rd",
-      "addressLocality": "McMurray",
-      "addressRegion": "PA",
-      "postalCode": "15317",
-      "addressCountry": "US"
-    },
-    "openingHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "09:00", "closes": "20:00" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "09:00", "closes": "17:00" }
-    ],
-    "paymentAccepted": "Cash",
-    "description": "Holistic therapeutic massage for chronic pain, stress, and surgical recovery. Margie Webb, R.N., BCTMB. Practicing since 2001."
-  })} />
-
-  <!-- Hero -->
-  <section class="bg-background relative overflow-hidden">
-    <div class="absolute inset-0 opacity-[0.025]" style="background: repeating-radial-gradient(circle at 1px 1px, var(--color-foreground) 1px, transparent 1px); background-size: 20px 20px;"></div>
-    <div class="relative max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)] pt-20 md:pt-[120px] pb-16 md:pb-20">
-      <div class="grid grid-cols-1 md:grid-cols-[55fr_45fr] gap-10 md:gap-14 items-center">
-        <div>
-          <h1 class="mb-6">
-            Escape from the Ordinary<br />to the <em class="font-display italic font-normal">Extraordinary.</em>
-          </h1>
-          <p class="text-lg text-muted-foreground leading-relaxed mb-8 max-w-lg">
-            Holistic therapeutic massage for chronic pain, stress, and surgical recovery, delivered by a registered nurse with 25 years of clinical experience.
-          </p>
-          <div class="flex flex-wrap gap-4">
-            <a href="/contact" class="bg-primary text-primary-foreground px-7 py-3 rounded-full font-medium text-base hover:opacity-90">
-              Book a Session
-            </a>
-            <a href="/services" class="border-2 border-primary text-primary px-7 py-3 rounded-full font-medium text-base hover:bg-primary/5">
-              See Services
-            </a>
-          </div>
-        </div>
-        <div class="order-first md:order-last">
-          <Image
-            src={heroImg}
-            alt="Serenity garden at Ahhh A Massage studio, McMurray PA"
-            class="rounded-xl border-2 border-accent/30 w-full object-cover aspect-[4/5] md:aspect-[3/4]"
-            widths={[400, 600, 800]}
-            sizes="(max-width: 768px) 100vw, 45vw"
-            loading="eager"
-            fetchpriority="high"
-          />
-        </div>
-      </div>
+  <!-- Hero — serene garden -->
+  <section class="relative min-h-[80vh] flex items-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="/images/garden.jpg" alt="Serene garden at Ahhh A Massage" class="w-full h-full object-cover" loading="eager" />
+      <div class="absolute inset-0 bg-gradient-to-r from-charcoal/70 via-charcoal/40 to-transparent"></div>
     </div>
-  </section>
-
-  <!-- Trust Strip -->
-  <section class="bg-muted py-10 md:py-12">
-    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-        <div class="text-center">
-          <p class="font-display text-2xl md:text-3xl font-bold text-primary">25+</p>
-          <p class="text-sm text-muted-foreground mt-1">Years in Practice</p>
-        </div>
-        <div class="text-center">
-          <p class="font-display text-2xl md:text-3xl font-bold text-primary">R.N., BCTMB</p>
-          <p class="text-sm text-muted-foreground mt-1">Board Certified</p>
-        </div>
-        <div class="text-center">
-          <p class="font-display text-lg md:text-xl font-bold text-primary">PA #MSG001784</p>
-          <p class="text-sm text-muted-foreground mt-1">Licensed in Pennsylvania</p>
-        </div>
-        <div class="text-center">
-          <p class="font-display text-2xl md:text-3xl font-bold text-primary">Readers' Choice</p>
-          <p class="text-sm text-muted-foreground mt-1">Award Winner</p>
-        </div>
-      </div>
-      <div class="flex justify-center items-center gap-8 mt-8">
-        <Image
-          src={bctmbImg}
-          alt="BCTMB Board Certified in Therapeutic Massage and Bodywork"
-          class="h-14 w-auto object-contain opacity-70"
-          width={112}
-          height={104}
-          loading="lazy"
-        />
-        <Image
-          src={amtaImg}
-          alt="AMTA American Massage Therapy Association member"
-          class="h-10 w-auto object-contain opacity-70"
-          width={200}
-          height={55}
-          loading="lazy"
-        />
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Overview -->
-  <section class="bg-white py-[var(--section-padding-y-mobile)] md:py-[var(--section-padding-y)]">
-    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
-      <h2 class="text-center mb-10 md:mb-14">How Margie Can Help</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <a href="/services#table-massage" class="block border-t-2 border-accent p-6 rounded-lg bg-background hover:bg-muted/50">
-          <h3 class="font-display text-xl mb-2">Table Massage</h3>
-          <p class="text-muted-foreground text-sm leading-relaxed">60 or 90-minute full-body session. Heated table, flannel sheets, pressure adjusted to your needs.</p>
-        </a>
-        <a href="/services#chair-massage" class="block border-t-2 border-accent p-6 rounded-lg bg-background hover:bg-muted/50">
-          <h3 class="font-display text-xl mb-2">Chair Massage</h3>
-          <p class="text-muted-foreground text-sm leading-relaxed">Targeted treatment for a lunch break. No clothing removed. Leave alert and focused.</p>
-        </a>
-        <a href="/services#relaxation-massage" class="block border-t-2 border-accent p-6 rounded-lg bg-background hover:bg-muted/50">
-          <h3 class="font-display text-xl mb-2">Relaxation Massage</h3>
-          <p class="text-muted-foreground text-sm leading-relaxed">Release tension, lower stress, improve circulation. The therapeutic touch your body has been asking for.</p>
-        </a>
-        <a href="/services#medical-massage" class="block border-t-2 border-accent p-6 rounded-lg bg-background hover:bg-muted/50">
-          <h3 class="font-display text-xl mb-2">Medical Massage</h3>
-          <p class="text-muted-foreground text-sm leading-relaxed">Targeted work for pain management, inflammation, and nerve compression. Designed around your medical history.</p>
-        </a>
-      </div>
-      <p class="text-center mt-8">
-        <a href="/services" class="text-primary font-medium text-sm underline underline-offset-4 decoration-primary/40 hover:decoration-primary">View All Services &rarr;</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- About Preview -->
-  <section class="bg-muted py-[var(--section-padding-y-mobile)] md:py-[var(--section-padding-y)]">
-    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
-      <div class="grid grid-cols-1 md:grid-cols-[40fr_60fr] gap-10 md:gap-14 items-center">
-        <Image
-          src={practitionerImg}
-          alt="Margie Webb performing shoulder massage at Ahhh A Massage, McMurray PA"
-          class="rounded-xl border-2 border-accent/30 w-full object-cover"
-          widths={[300, 480]}
-          sizes="(max-width: 768px) 100vw, 40vw"
-          loading="lazy"
-        />
-        <div>
-          <h2 class="mb-2">Margie Webb, R.N., BCTMB</h2>
-          <p class="text-accent font-medium text-sm mb-6">Licensed Massage Therapist since 2001</p>
-          <p class="text-muted-foreground leading-relaxed mb-6">
-            As both a registered nurse and a board-certified massage therapist, Margie doesn't just relax muscles. She diagnoses what's driving the tension. Every session begins with a confidential intake form and a conversation about your full health picture.
-          </p>
-          <a href="/about" class="text-primary font-medium text-sm underline underline-offset-4 decoration-primary/40 hover:decoration-primary">Meet Margie &rarr;</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Specialties -->
-  <section class="bg-white py-[var(--section-padding-y-mobile)] md:py-[var(--section-padding-y)]">
-    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
-      <div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 lg:gap-14">
-        <div>
-          <h2 class="mb-8">Conditions Margie Treats</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
-            {[
-              { name: 'Chronic Stress', note: 'Physical, emotional, or mental. Break the pain cycle.' },
-              { name: 'Muscle Spasms', note: 'From daily activity, gardening, or sports.' },
-              { name: 'Arthritis Pain', note: 'Decreases joint stiffness, increases range of motion.' },
-              { name: 'Fibromyalgia', note: 'Desensitizes tender points, relaxes stressed muscles.' },
-              { name: 'Repetitive Movement Injuries', note: 'Carpal tunnel, texting fatigue, data entry strain.' },
-              { name: 'Headaches, Carpal Tunnel & TMJ', note: 'Targets trigger points that refer pain upward.' },
-              { name: 'Cancer Treatment Support', note: 'Safe, adapted massage during chemotherapy and radiation.' },
-              { name: 'Post-Surgical Recovery', note: 'Mastectomy, breast surgery, neck and back surgery.' },
-            ].map(item => (
-              <div class="flex gap-3 items-start">
-                <span class="mt-2 w-2 h-2 bg-accent rounded-full shrink-0"></span>
-                <div>
-                  <p class="font-semibold text-sm text-foreground">{item.name}</p>
-                  <p class="text-muted-foreground text-sm">{item.note}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div class="hidden lg:block">
-          <Image
-            src={specialtyImg}
-            alt="Sports massage at Ahhh A Massage, McMurray PA"
-            class="rounded-xl w-full object-cover aspect-square sticky top-28"
-            widths={[320, 480]}
-            sizes="320px"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonial Pullout -->
-  <section class="bg-muted py-[var(--section-padding-y-mobile)] md:py-[var(--section-padding-y)]">
-    <div class="max-w-[680px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
-      <blockquote class="border-l-[3px] border-accent pl-6 md:pl-8">
-        <p class="font-display italic text-lg md:text-xl leading-relaxed text-foreground/90">
-          "Whatever she does to the muscles makes the pain go away. I schedule appointments every 4 weeks. I told her she is not allowed to retire unless she can replace herself with an equally skilled and compassionate person."
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
+      <div class="max-w-lg">
+        <div class="line-sage mb-6"></div>
+        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-light text-white leading-[1.15] mb-6">
+          Escape from<br />the Ordinary to<br />the <em class="font-medium">Extraordinary</em>
+        </h1>
+        <p class="text-white/75 leading-relaxed mb-10 max-w-sm">
+          Nurturing massage to relax and rejuvenate your mind, body, and spirit. 25+ years of experience.
         </p>
-        <footer class="mt-4 text-sm text-muted-foreground font-body not-italic">Adam, McMurray PA</footer>
-      </blockquote>
-      <p class="mt-6">
-        <a href="/testimonials" class="text-primary font-medium text-sm underline underline-offset-4 decoration-primary/40 hover:decoration-primary">Read Client Stories &rarr;</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- CTA Band -->
-  <section class="bg-primary py-12 md:py-14">
-    <div class="max-w-[800px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)] text-center">
-      <h2 class="text-primary-foreground mb-3">Ready to Feel Better?</h2>
-      <p class="text-primary-foreground/80 mb-6">Call for a free consultation or book your first session.</p>
-      <a href="tel:4128778569" class="font-display text-2xl md:text-3xl font-bold text-primary-foreground block mb-6">(412) 877-8569</a>
-      <a href="/contact" class="inline-block bg-primary-foreground text-primary px-8 py-3 rounded-full font-medium hover:opacity-90">
-        Book a Session
-      </a>
-    </div>
-  </section>
-
-  <!-- Studio Glimpse -->
-  <section class="bg-white py-[var(--section-padding-y-mobile)] md:py-[var(--section-padding-y)]">
-    <div class="max-w-[1200px] mx-auto px-[var(--padding-x-mobile)] md:px-[var(--padding-x)]">
-      <h2 class="mb-8">The Studio</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-        <Image
-          src={studioYardImg}
-          alt="Ahhh A Massage studio yard and garden, McMurray PA"
-          class="rounded-lg w-full object-cover aspect-[4/3]"
-          widths={[400, 600]}
-          sizes="(max-width: 768px) 100vw, 33vw"
-          loading="lazy"
-        />
-        <Image
-          src={studioEntryImg}
-          alt="Ahhh A Massage garden entry and mailbox, McMurray PA"
-          class="rounded-lg w-full object-cover aspect-[4/3]"
-          widths={[400, 600]}
-          sizes="(max-width: 768px) 100vw, 33vw"
-          loading="lazy"
-        />
-        <Image
-          src={studioSignImg}
-          alt="Ahhh A Massage business sign, McMurray PA"
-          class="rounded-lg w-full object-cover aspect-[4/3]"
-          widths={[400, 600]}
-          sizes="(max-width: 768px) 100vw, 33vw"
-          loading="lazy"
-        />
+        <div class="flex flex-wrap gap-4">
+          <a href="tel:4128778569" class="btn btn-sage">
+            Call Margie
+            <span class="text-white/70 font-normal">(412) 877-8569</span>
+          </a>
+          <a href="/services" class="btn btn-white">Our Services</a>
+        </div>
       </div>
-      <p class="mt-6 text-muted-foreground leading-relaxed max-w-prose">
-        The setting at 310 East McMurray Road was chosen for its serenity gardens and fish pond. Part of the plan to relax and refresh you before your session begins. Inside: low lights, calming music, a heated table, and soft flannel sheets.
+    </div>
+  </section>
+
+  <!-- Intro strip -->
+  <section class="bg-sage-pale py-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="font-display text-xl md:text-2xl text-sage-dark leading-relaxed italic">
+        "I use a holistic approach for your therapeutic massage — as both a registered nurse and massage therapist, I want to get to the root of your problem."
       </p>
-      <p class="mt-2 text-sm text-muted-foreground">310 East McMurray Rd, McMurray, PA 15317</p>
+      <p class="text-earth text-sm mt-4 font-medium">— Margie Webb, R.N., BCTMB</p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="py-20 lg:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-14 reveal">
+        <div class="line-sage mb-4"></div>
+        <h2 class="font-display text-3xl md:text-4xl font-light text-charcoal">Holistic Therapeutic Massage</h2>
+        <p class="text-earth mt-4 leading-relaxed">Every session is designed around you — your pain, your stress, your goals for healing.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6 reveal">
+        {services.map(s => (
+          <a href="/services" class="group bg-white rounded-2xl p-8 border border-sage-pale hover:border-sage-light transition-all duration-300 hover:shadow-lg hover:shadow-sage/10 hover:-translate-y-1">
+            <div class="w-10 h-10 rounded-full bg-sage-pale flex items-center justify-center text-sage" set:html={s.icon} />
+            <h3 class="font-display text-xl font-medium text-charcoal mt-4 mb-3 group-hover:text-sage-dark transition-colors">{s.name}</h3>
+            <p class="text-earth text-sm leading-relaxed">{s.desc}</p>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="/services" class="btn btn-outline">Learn More About Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Setting -->
+  <section class="bg-stone py-20 lg:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="reveal">
+          <div class="line-sage mb-4"></div>
+          <h2 class="font-display text-3xl md:text-4xl font-light text-charcoal mb-6">This House...</h2>
+          <p class="text-earth leading-relaxed mb-6">
+            ...was chosen for its unique design. The serenity gardens and fish pond are a part of the plan to relax and refresh you. The massage room engulfs you in low lights and calming music. You sink onto a heated table as you nestle in soft cozy flannel sheets. The music lets your mind drift away.
+          </p>
+          <a href="/about" class="btn btn-outline">Meet Margie</a>
+        </div>
+        <div class="reveal grid grid-cols-2 gap-3">
+          <img src="/images/house-front.jpg" alt="Front of the massage studio in McMurray" class="rounded-2xl w-full aspect-[3/4] object-cover col-span-2" loading="lazy" />
+          <img src="/images/patio.jpg" alt="Garden seating area" class="rounded-2xl w-full aspect-square object-cover" loading="lazy" />
+          <img src="/images/garden-2.jpg" alt="Serenity garden" class="rounded-2xl w-full aspect-square object-cover" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial feature -->
+  <section class="py-20 lg:py-28">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+      <div class="line-sage mx-auto mb-6"></div>
+      <p class="text-sage uppercase tracking-[0.2em] text-xs font-semibold mb-6">Testimonial</p>
+      <blockquote class="font-display text-2xl md:text-3xl lg:text-4xl font-light text-charcoal leading-relaxed italic">
+        "If Margie hadn't helped me get my life back — I would have missed out on being a husband and a father. My life is good."
+      </blockquote>
+      <div class="mt-8">
+        <a href="/testimonials" class="btn btn-outline">Read Our Testimonials</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-20 lg:py-28 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="/images/relaxation.jpg" alt="" class="w-full h-full object-cover" aria-hidden="true" loading="lazy" />
+      <div class="absolute inset-0 bg-sage-dark/85"></div>
+    </div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-display text-3xl md:text-4xl font-light text-white mb-6 reveal">
+        Begin Your <em class="font-medium">Healing</em> Journey
+      </h2>
+      <p class="text-white/70 mb-4 reveal">Call for a free consultation.</p>
+      <p class="text-white/60 text-sm mb-10 reveal">Mon–Thu 9am–8pm · Fri 9am–5pm · Sat by appointment</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal">
+        <a href="tel:4128778569" class="btn bg-white text-sage-dark border-2 border-white hover:bg-transparent hover:text-white">
+          Call Margie — (412) 877-8569
+        </a>
+        <a href="/contact" class="btn border-2 border-white/30 text-white hover:bg-white/10">Send a Message</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credentials -->
+  <section class="py-12 bg-sage-pale/50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-center gap-8">
+      <img src="/images/amta-logo.png" alt="American Massage Therapy Association Member" class="h-12 opacity-60" loading="lazy" />
+      <img src="/images/bctmb-logo.png" alt="Board Certified in Therapeutic Massage and Bodywork" class="h-12 opacity-60" loading="lazy" />
+      <p class="text-earth text-sm">Readers' Choice Award — Massage Therapy</p>
     </div>
   </section>
 </Layout>
